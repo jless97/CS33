@@ -1,0 +1,403 @@
+0x0000000000542140<Ftimes+0>:data.c:2767	mov %rsi,%rdx	rdx = 0x7fffffffd7e0
+0x0000000000542143<Ftimes+3>:data.c:2768	mov %rdi,%rsi	rsi = 0x3
+0x0000000000542146<Ftimes+6>:data.c:2768	mov $0x2,%edi	edi = 0x2
+0x000000000054214b<Ftimes+11>:data.c:2768	jump 0x541d00 <arith_driver>	rip=0x541d00
+0x0000000000541d00<arith_driver+0>:data.c:2577	push %r15	M8[0x7fffffffd7c8]=0xba84b2 rsp=0x7fffffffd7c8
+0x0000000000541d02<arith_driver+2>:data.c:2577	push %r14	M8[0x7fffffffd7c0]=0x7fffffffd7e0 rsp=0x7fffffffd7c0
+0x0000000000541d04<arith_driver+4>:data.c:2577	push %r13	M8[0x7fffffffd7b8]=0x180 rsp=0x7fffffffd7b8
+0x0000000000541d06<arith_driver+6>:data.c:2577	push %r12	M8[0x7fffffffd7b0]=0xaf7950 rsp=0x7fffffffd7b0
+0x0000000000541d08<arith_driver+8>:data.c:2577	push %rbp	M8[0x7fffffffd7a8]=0x7fffffffd8b0 rsp=0x7fffffffd7a8
+0x0000000000541d09<arith_driver+9>:data.c:2577	push %rbx	M8[0x7fffffffd7a0]=0x7fffffffd7f8 rsp=0x7fffffffd7a0
+0x0000000000541d0a<arith_driver+10>:data.c:2577	sub $0x28,%rsp	rsp=0x7fffffffd770
+0x0000000000541d0e<arith_driver+14>:data.c:2593	movq $0x1,0x10(%rsp)	M8[0x7fffffffd780]=0x1
+0x0000000000541d17<arith_driver+23>:data.c:2584	cmp $0x2,%edi		
+0x0000000000541d1a<arith_driver+26>:data.c:2584	je 0x541d2d <arith_driver+45>	rip=0x541d2d
+0x0000000000541d2d<arith_driver+45>:data.c:2602	test %rsi,%rsi		
+0x0000000000541d30<arith_driver+48>:data.c:2602	jle 0x5420cc <arith_driver+972>	rip=0x541d36
+0x0000000000541d36<arith_driver+54>:data.c:2602	mov 0x10(%rsp),%rbx	rbx=0x1
+0x0000000000541d3b<arith_driver+59>:data.c:2602	xor %r11d,%r11d	r11d=0x0
+0x0000000000541d3e<arith_driver+62>:data.c:2602	mov %rdx,%r12	r12=0x7fffffffd7e0
+0x0000000000541d41<arith_driver+65>:data.c:2602	mov %edi,%r14d	r14d=0x2
+0x0000000000541d44<arith_driver+68>:data.c:2602	xor %ebp,%ebp	ebp=0x0
+0x0000000000541d46<arith_driver+70>:data.c:2602	mov %rsi,%rcx	rcx=0x3
+0x0000000000541d49<arith_driver+73>:data.c:2602	mov %r11d,%r13d		r13d=0x0
+0x0000000000541d4c<arith_driver+76>:data.c:2602	movq $0x0,0x18(%rsp)	M8[0x7fffffffd788]=0x0
+0x0000000000541d55<arith_driver+85>:data.c:2602	nopl (%rax)		rip=0x541d58
+0x0000000000541d58<arith_driver+88>:data.c:2602	add $0x1,%rbp		rbp=0x1
+0x0000000000541d5c<arith_driver+92>:data.c:2619	mov %r14d,%esi		esi=0x2
+0x0000000000541d5f<arith_driver+95>:data.c:2611	mov -0x8(%r12,%rbp,8),%rdi	rdi=0x6d54
+0x0000000000541d64<arith_driver+100>:data.c:2611	lea -0x1(%rbp),%r15	r15=0x0
+0x0000000000541d68<arith_driver+104>:data.c:703	mov %edi,%r8d		r8d=0x6d54
+0x0000000000541d6b<arith_driver+107>:data.c:703	mov %edi,%eax		eax=0x6d54
+0x0000000000541d6d<arith_driver+109>:data.c:703	and $0x7,%r8d		r8d=0x4
+0x0000000000541d71<arith_driver+113>:data.c:2384	cmp $0x3,%r8d
+0x0000000000541d75<arith_driver+117>:data.c:2384	je 0x541f70 <arith_driver+624>		rip=0x541d7b
+0x0000000000541d7b<arith_driver+123>:data.c:2612	mov 0x633316(%rip),%rdx	rdx=0xbb5782
+0x0000000000541d82<arith_driver+130>data.c:2612	test $0x3,%dil
+0x0000000000541d86<arith_driver+134>:data.c:2612	je 0x541d92 <arith_driver+146>		rip=0x541d92
+0x0000000000541d92<arith_driver+146>:data.c:2614	cmp $0x7,%r8d
+0x0000000000541d96<arith_driver+150>:data.c:2614	je 0x541fc8 <arith_driver+712>		rip=0x541d9c
+0x0000000000541d9c<arith_driver+156>:data.c:2617	mov %rdi,-0x8(%r12,%rbp,8)	M8[0x7fffffffd7e0]=0x6d54
+0x0000000000541da1<arith_driver+161>:data.c:701	sar $0x2,%rdi	rdi=0x1b55
+0x0000000000541da5<arith_driver+165>:data.c:2619	cmp $0x8,%r14d
+0x0000000000541da9<arith_driver+169>:data.c:2619	ja 0x541dd0 <arith_driver+208>		rip=0x541dab
+0x0000000000541dab<arith_driver+171>:data.c:2619	jmpq *0x5e9300(,%rsi,8)	rip=0x541e30
+0x0000000000541e30<arith_driver+304>:data.c:2638	test %rdi,%rdi
+0x0000000000541e33<arith_driver+307>:data.c:2638	js 0x542030 <arith_driver+816>		rip=0x541e39
+0x0000000000541e39<arith_driver+313>:data.c:2638	je 0x541f40 <arith_driver+576>		rip=0x541e3f
+0x0000000000541e3f<arith_driver+319>:data.c:2638	test %rbx,%rbx 
+0x0000000000541e42<arith_driver+322>:data.c:2638	js 0x542098 <arith_driver+920>		rip=0x541e48
+0x0000000000541e48<arith_driver+328>:data.c:2638	movabs $0x7fffffffffffffff,%rax	rax=0x7fffffffffffffff
+0x0000000000541e52<arith_driver+338>:data.c:2638	cqto	rdx=0x0
+0x0000000000541e54<arith_driver+340>:data.c:2638	idiv %rdi	rax=0x4aee2e9caa7ef rdx=0x8a4
+0x0000000000541e57<arith_driver+343>:data.c:2638	cmp %rbx,%rax
+0x0000000000541e5a<arith_driver+346>:data.c:2638	setl %al	al=0x0
+0x0000000000541e5d<arith_driver+349>:data.c:2638	test %al,%al
+0x0000000000541e5f<arith_driver+351>:data.c:2638	je 0x541f40 <arith_driver+576>		rip=0x541f40
+0x0000000000541f40<arith_driver+576>:data.c:2645	imul %rdi,%rbx	rbx=0x1b55
+0x0000000000541f44<arith_driver+580>:data.c:2645	jmpq 0x541dd0 <arith_driver+208>	rip=0x541dd0
+0x0000000000541dd0<arith_driver+208>:data.c:2602	lea 0x1(%r15),%rbp	rbp=0x1
+0x0000000000541dd4<arith_driver+212>:data.c:2602	cmp %rbp,%rcx
+0x0000000000541dd7<arith_driver+215>:data.c:2602	jle 0x541efa <arith_driver+506>	rip=0x541ddd
+0x0000000000541ddd<arith_driver+221>:data.c:2604	test %r13b,%r13b
+0x0000000000541de0<arith_driver+224>:data.c:2604	je 0x542018 <arith_driver+792>		rip= 0x542018
+0x0000000000542018<arith_driver+792>:data.c:2635	mov %rbx,0x10(%rsp)	M8[0x7fffffffd780]=0x1b55
+0x000000000054201d<arith_driver+797>:data.c:2635	mov %rbp,0x18(%rsp)	M8[0x7fffffffd788]=0x1
+0x0000000000542022<arith_driver+802>:data.c:2635	jmpq 0x541d58 <arith_driver+88>	rip=0x541d58
+0x0000000000541d58<arith_driver+88>:data.c:2602	add $0x1,%rbp		rbp=0x2
+0x0000000000541d5c<arith_driver+92>:data.c:2619	mov %r14d,%esi		esi=0x2
+0x0000000000541d5f<arith_driver+95>:data.c:2611	mov -0x8(%r12,%rbp,8),%rdi	rdi=0xfffff00001000004
+0x0000000000541d64<arith_driver+100>:data.c:2611	lea -0x1(%rbp),%r15	r15=0x1
+0x0000000000541d68<arith_driver+104>:data.c:703	mov %edi,%r8d		r8d=0x1000004
+0x0000000000541d6b<arith_driver+107>:data.c:703	mov %edi,%eax		eax=0x1000004
+0x0000000000541d6d<arith_driver+109>:data.c:703	and $0x7,%r8d		r8d=0x4
+0x0000000000541d71<arith_driver+113>:data.c:2384	cmp $0x3,%r8d
+0x0000000000541d75<arith_driver+117>:data.c:2384	je 0x541f70 <arith_driver+624>		rip=0x541d7b
+0x0000000000541d7b<arith_driver+123>:data.c:2612	mov 0x633316(%rip),%rdx	rdx=0xbb5782
+0x0000000000541d82<arith_driver+130>:data.c:2612	test $0x3,%dil
+0x0000000000541d86<arith_driver+134>:data.c:2612	je 0x541d92 <arith_driver+146>		rip=0x541d92
+0x0000000000541d92<arith_driver+146>:data.c:2614	cmp $0x7,%r8d	
+0x0000000000541d96<arith_driver+150>:data.c:2614	je 0x541fc8 <arith_driver+712>		rip=0x541d9c
+0x0000000000541d9c<arith_driver+156>:data.c:2617	mov %rdi,-0x8(%r12,%rbp,8)	M8[0x7fffffffd7e8]=0xfffff00001000004
+0x0000000000541da1<arith_driver+161>:data.c:701	sar $0x2,%rdi		rdi= 0xfffffc0000400001
+0x0000000000541da5<arith_driver+165>:data.c:2619	cmp $0x8,%r14d
+0x0000000000541da9<arith_driver+169>:data.c:2619	ja 0x541dd0 <arith_driver+208>		rip=0x541dab
+0x0000000000541dab<arith_driver+171>:data.c:2619	jmpq *0x5e9300(,%rsi,8)	rip=0x541e30
+0x0000000000541e30<arith_driver+304>:data.c:2638	test %rdi,%rdi
+0x0000000000541e33<arith_driver+307>:data.c:2638	js 0x542030 <arith_driver+816>		rip=0x542030
+0x0000000000542030<arith_driver+816>:data.c:2638	test %rbx,%rbx
+0x0000000000542033<arith_driver+819>:data.c:2638	js 0x5420b2 <arith_driver+946>		rip=0x542035
+0x0000000000542035<arith_driver+821>:data.c:2638	cmp $0xffffffffffffffff,%rdi
+0x0000000000542039<arith_driver+825>:data.c:2638	je 0x541f40 <arith_driver+576>		rip=0x54203f
+0x000000000054203f<arith_driver+831>:data.c:2638	movabs $0x8000000000000000,%rax	rax=0x8000000000000000
+0x0000000000542049<arith_driver+841>:data.c:2638	cqto		rdx=0xffffffffffffffff
+0x000000000054204b<arith_driver+843>:data.c:2638	idiv %rdi	rax=0x200002 rdx=0xffffffffff5ffffe
+0x000000000054204e<arith_driver+846>:data.c:2638	cmp %rbx,%rax
+0x0000000000542051<arith_driver+849>:data.c:2638	setl %al	al=0x0
+0x0000000000542054<arith_driver+852>:data.c:2638	jmpq 0x541e5d <arith_driver+349>	rip=0x541e5d
+0x0000000000541e5d<arith_driver+349>:data.c:2638	test %al,%al
+0x0000000000541e5f<arith_driver+351>:data.c:2638	je 0x541f40 <arith_driver+576>		rip=0x541f40
+0x0000000000541f40<arith_driver+576>:data.c:2645	imul %rdi,%rbx		rbx=0xff92ac06d5401b55
+0x0000000000541f44<arith_driver+580>:data.c:2645	jmpq 0x541dd0 <arith_driver+208>	rip=0x541dd0
+0x0000000000541dd0<arith_driver+208>:data.c:2602	lea 0x1(%r15),%rbp		rbp=0x2
+0x0000000000541dd4<arith_driver+212>:data.c:2602	cmp %rbp,%rcx
+0x0000000000541dd7<arith_driver+215>:data.c:2602	jle 0x541efa <arith_driver+506>	rip=0x541ddd
+0x0000000000541ddd<arith_driver+221>:data.c:2604	test %r13b,%r13b
+0x0000000000541de0<arith_driver+224>:data.c:2604	je 0x542018 <arith_driver+792>		rip=0x542018
+0x0000000000542018<arith_driver+792>:data.c:2635	mov %rbx,0x10(%rsp)	M8[0x7fffffffd780]=0xff92ac06d5401b55
+0x000000000054201d<arith_driver+797>:data.c:2635	mov %rbp,0x18(%rsp)	M8[0x7fffffffd788]=0x2
+0x0000000000542022<arith_driver+802>:data.c:2635	jmpq 0x541d58 <arith_driver+88>	rip=0x541d58
+0x0000000000541d58<arith_driver+88>:data.c:2602	add $0x1,%rbp		rbp=0x3
+0x0000000000541d5c<arith_driver+92>:data.c:2619	mov %r14d,%esi		esi=0x2
+0x0000000000541d5f<arith_driver+95>:data.c:2611	mov -0x8(%r12,%rbp,8),%rdi	rdi=0x2cc
+0x0000000000541d64<arith_driver+100>:data.c:2611	lea -0x1(%rbp),%r15	r15=0x2
+0x0000000000541d68<arith_driver+104>:data.c:703	mov %edi,%r8d		r8d=0x2cc
+0x0000000000541d6b<arith_driver+107>:data.c:703	mov %edi,%eax		eax=0x2cc
+0x0000000000541d6d<arith_driver+109>:data.c:703	and $0x7,%r8d		r8d=0x4
+0x0000000000541d71<arith_driver+113>:data.c:2384	cmp $0x3,%r8d
+0x0000000000541d75<arith_driver+117>:data.c:2384	je 0x541f70 <arith_driver+624>		rip=0x541d7b
+0x0000000000541d7b<arith_driver+123>:data.c:2612	mov 0x633316(%rip),%rdx	rdx=0xbb5782
+0x0000000000541d82<arith_driver+130>:data.c:2612	test $0x3,%dil
+0x0000000000541d86<arith_driver+134>:data.c:2612	je 0x541d92 <arith_driver+146>		rip=0x541d92
+0x0000000000541d92<arith_driver+146>:data.c:2614	cmp $0x7,%r8d
+0x0000000000541d96<arith_driver+150>:data.c:2614	je 0x541fc8 <arith_driver+712>		rip=0x541d9c
+0x0000000000541d9c<arith_driver+156>:data.c:2617	mov %rdi,-0x8(%r12,%rbp,8)	M8[0x7fffffffd7f0]=0x2cc
+0x0000000000541da1<arith_driver+161>:data.c:701	sar $0x2,%rdi		rdi=0xb3
+0x0000000000541da5<arith_driver+165>:data.c:2619	cmp $0x8,%r14d
+0x0000000000541da9<arith_driver+169>:data.c:2619	ja 0x541dd0 <arith_driver+208>		rip=0x541dab
+0x0000000000541dab<arith_driver+171>:data.c:2619	jmpq *0x5e9300(,%rsi,8)	rip=0x541e30
+0x0000000000541e30<arith_driver+304>:data.c:2638	test %rdi,%rdi
+0x0000000000541e33<arith_driver+307>:data.c:2638	js 0x542030 <arith_driver+816>		rip=0x541e39
+0x0000000000541e39<arith_driver+313>:data.c:2638	je 0x541f40 <arith_driver+576>		rip=0x541e3f
+0x0000000000541e3f<arith_driver+319>:data.c:2638	test %rbx,%rbx
+0x0000000000541e42<arith_driver+322>:data.c:2638	js 0x542098 <arith_driver+920>		rip=0x542098
+0x0000000000542098<arith_driver+920>:data.c:2638	movabs $0x8000000000000000,%rax	rax=0x8000000000000000
+0x00000000005420a2<arith_driver+930>:data.c:2638	cqto		rdx=0xffffffffffffffff
+0x00000000005420a4<arith_driver+932>:data.c:2638	idiv %rdi	rax=0xff48f044a5e641ca rdx=0xffffffffffffffc2
+0x00000000005420a7<arith_driver+935>:data.c:2638	cmp %rbx,%rax
+0x00000000005420aa<arith_driver+938>:data.c:2638	setg %al	al=0x0
+0x00000000005420ad<arith_driver+941>:data.c:2638	jmpq 0x541e5d <arith_driver+349	rip=0x541e5d
+0x0000000000541e5d<arith_driver+349>:data.c:2638	test %al,%al
+0x0000000000541e5f<arith_driver+351>:data.c:2638	je 0x541f40 <arith_driver+576>		rip=0x541f40
+0x0000000000541f40<arith_driver+576>:data.c:2645	imul %rdi, %rbx		rbx=0xb38e48c71bd31c6f
+0x0000000000541f44<arith_driver+580>:data.c:2645	jmpq 0x541dd0 <arith_driver+208>	rip=0x541dd0
+0x0000000000541dd0<arith_driver+208>:data.c:2602	lea 0x1(%r15),%rbp	rbp=0x3
+0x0000000000541dd4<arith_driver+212>:data.c:2602	cmp %rbp,%rcx
+0x0000000000541dd7<arith_driver+215>:data.c:2602	jle 0x541efa <arith_driver+506>	rip=0x541efa
+0x0000000000541efa<arith_driver+506>:data.c:700	lea 0x0(,%rbx,4),%rax		rax=0xce39231c6f4c71bc
+0x0000000000541f02<arith_driver+514>:data.c:2679	add $0x28,%rsp		rsp= 0x7fffffffd798
+0x0000000000541f06<arith_driver+518>:data.c:2679	pop %rbx	rbx=M8[0x7fffffffd798] rsp=0x7fffffffd7a0
+0x0000000000541f07<arith_driver+519>:data.c:2679	pop %rbp	rbp=M8[0x7fffffffd7a0] rsp=0x7fffffffd7a8
+0x0000000000541f08<arith_driver+520>:data.c:2679	pop %r12	r12=M8[0x7fffffffd7a8] rsp=0x7fffffffd7b0
+0x0000000000541f0a<arith_driver+522>:data.c:2679	pop %r13	r13=M8[0x7fffffffd7b0] rsp=0x7fffffffd7b8
+0x0000000000541f0c<arith_driver+524>:data.c:2679	pop %r14	r14=M8[0x7fffffffd7b8] rsp=0x7fffffffd7c0
+0x0000000000541f0e<arith_driver+526>:data.c:2679	pop %r15	r15=M8[0x7fffffffd7c0]	rsp=0x7fffffffd7c8
+0x0000000000541f10<arith_driver+528>:data.c:2679	c3 retq
+
+0x0000000000555429<eval_sub+1641>:eval.c:2156	cmpb $0x0,-0x88(%rbp)
+0x0000000000555430<eval_sub+1648>:eval.c:2154	mov %rax,%rbx	rbx=0xce39231c6f4c71bc
+0x0000000000555433<eval_sub+1651>:eval.c:2156	je 0x555081 <eval_sub+705>	rip=0x555081
+0x0000000000555081<eval_sub+705>:eval.c:2263	mov 0x620200(%rip),%rax	rax=0xfba1c0
+0x0000000000555088<eval_sub+712>:eval.c:2262	subq $0x1,0x620250(%rip)	M[0xb752e0]=0xb752df
+0x0000000000555090<eval_sub+720>:eval.c:2263	testb $0x1,0x1(%rax,%r13,1)
+0x0000000000555096<eval_sub+726>:eval.c:2263	jne 0x555178 <eval_sub+952>	rip=0x55509c
+0x000000000055509c<eval_sub+732>:eval.c:2265	subq $0x20,0x620264(%rip)	M[0xb75308]=0xb7531c
+0x00000000005550a4<eval_sub+740>:eval.c:2267	jmpq 0x554dea <eval_sub+42>	rip=0x554dea
+0x0000000000554dea<eval_sub+42>:eval.c:2268	lea -0x28(%rbp),%rsp	rsp=0x7fffffffd888
+0x0000000000554dee<eval_sub+46>:eval.c:2268	mov %rbx,%rax	rax=0xce39231c6f4c71bc
+0x0000000000554df1<eval_sub+49>:eval.c:2268	pop %rbx	rbx=M8[0x7fffffffd888] rsp=0x7fffffffd890
+0x0000000000554df2<eval_sub+50>:eval.c:2268	pop %r12	r12=M8[0x7fffffffd890] rsp=0x7fffffffd898
+0x0000000000554df4<eval_sub+52>:eval.c:2268	pop %r13	r13=M8[0x7fffffffd898] rsp=0x7fffffffd8a0
+0x0000000000554df6<eval_sub+54>:eval.c:2268	pop %r14	r14=M8[0x7fffffffd8a0] rsp=0x7fffffffd8a8
+0x0000000000554df8<eval_sub+56>:eval.c:2268	pop %r15	r15=M8[0x7fffffffd8a8] rsp=0x7fffffffd8b0
+0x0000000000554dfa<eval_sub+58>:eval.c:2268	pop %rbp	rbp=M8[0x7fffffffd8b0] rsp=0x7fffffffd8b8
+0x0000000000554dfb<eval_sub+59>:eval.c:2268	c3 retq
+0x0000000000555124<eval_sub+868>:eval.c:2165	mov %r15,%rdi	rdi=0xfded46
+0x0000000000555127<eval_sub+871>:eval.c:2167	mov %rax,-0x8(%rbx)	M8[0x7fffffffd8f0]=0xce39231c6f4c71bc
+0x000000000055512b<eval_sub+875>:eval.c:2165	callq 0x540a30 <Fcdr>
+0x0000000000540a30<Fcdr+0>:lisp.h:703	mov %edi,%eax	eax=0xfded46
+0x0000000000540a32<Fcdr+2>:lisp.h:703	and $0x7,%eax	eax=0x6
+0x0000000000540a35<Fcdr+5>:lisp.h:1084	cmp $0x6,%eax	
+0x0000000000540a38<Fcdr+8>:lisp.h:1084	je 0x540a50 <Fcdr+32>	rip=0x540a50
+0x0000000000540a50<Fcdr+32>:lisp.h:1055	mov 0x2(%rdi),%rax	rax=0xba84b2
+0x0000000000540a54<Fcdr+36>:	c3 retq
+0x0000000000555130<eval_sub+880>:eval.c:2165	callq 0x540a30 <Fcdr>
+0x0000000000555130<eval_sub+880>:eval.c:2165	mov %rax,%r15	r15=0xba84b2
+0x0000000000555133<eval_sub+883>:eval.c:2165	cmp -0x88(%rbp),%rbx
+0x000000000055513a<eval_sub+890>:eval.c:2165	jne 0x555110 <eval_sub+848>	rip=0x555110
+0x0000000000555110<eval_sub+848>:eval.c:2167	mov %r15,%rdi	rdi=0xba84b2
+0x0000000000555113<eval_sub+851>:eval.c:2167	add $0x8,%rbx	rbx=0x7fffffffd900
+0x0000000000555117<eval_sub+855>:eval.c:2167	callq 0x540a00 <Fcar>
+0x0000000000540a00<Fcar+0>:lisp.h:703	mov %edi,%eax	eax=0xba84b2
+0x0000000000540a02<Fcar+2>:lisp.h:703	and $0x7,%eax	eax=0x2
+0x0000000000540a05<Fcar+5>:lisp.h:1077	cmp $0x6,%eax
+0x0000000000540a08<Fcar+8>:lisp.h:1077	je 0x540a20 <Fcar+32>	rip=0x540a0a
+0x0000000000540a0a<Fcar+10>:lisp.h:2354	mov 0x6347f7(%rip),%rax	rax=0xba84b2
+0x0000000000540a11<Fcar+17>:lisp.h:1078	cmp %rax,%rdi	
+0x0000000000540a14<Fcar+20>:lisp.h:1078	jne 0x540a25 <Fcar+37>	rip=0x540a16
+0x0000000000540a16<Fcar+22>:data.c:566	c3 retq
+0x000000000055511c<eval_sub+860>:eval.c:2167	mov %rax,%rdi	rdi=0xba84b2
+0x000000000055511f<eval_sub+863>:eval.c:2167	callq 0x554dc0 <eval_sub>
+0x0000000000554dc0<eval_sub+0>:eval.c:2055	push %rbp	M8[0x7fffffffd8b8]=0x7fffffffd960 rsp= 0x7fffffffd8b8
+0x0000000000554dc1<eval_sub+1>:lisp.h:703	mov %edi,%eax	eax=0xba84b2
+0x0000000000554dc3<eval_sub+3>:eval.c:2055	mov %rsp,%rbp	rbp=0x7fffffffd8b0
+0x0000000000554dc6<eval_sub+6>:lisp.h:703	and $0x7,%eax	eax=0x2
+0x0000000000554dc9<eval_sub+9>:eval.c:2055	push %r15	M8[0x7fffffffd8b0]=0xba84b2 rsp=0x7fffffffd8b0
+0x0000000000554dcb<eval_sub+11>:eval.c:2055	push %r14	M8[0x7fffffffd8a8]=0x2 rsp=0x7fffffffd8a8
+0x0000000000554dcd<eval_sub+13>:eval.c:2055	push %r13	M8[0x7fffffffd8a0]=0xb rsp=0x7fffffffd8a0
+0x0000000000554dcf<eval_sub+15>:eval.c:2055	push %r12	M8[0x7fffffffd898]=0xafb8e0 rsp=0x7fffffffd898
+0x0000000000554dd1<eval_sub+17>:eval.c:2055	mov %rdi,%r12	r12=0xba84b2
+0x0000000000554dd4<eval_sub+20>:eval.c:2055	push %rbx	M8[0x7fffffffd890]=0x7fffffffd900 rsp=0x7fffffffd890
+0x0000000000554dd5<eval_sub+21>:eval.c:2055	sub $0x78,%rsp	rsp=0x7fffffffd86c
+0x0000000000554dd9<eval_sub+25>:eval.c:2061	cmp $0x2,%eax
+0x0000000000554ddc<eval_sub+28>:eval.c:2061	je 0x554fd8 <eval_sub+536>	rip=0x554fd8
+0x0000000000554fd8<eval_sub+536>:eval.c:2067	mov 0x61f7b1(%rip),%rsi 	rsi=0xba84b2
+0x0000000000554fdf<eval_sub+543>:eval.c:2354	mov 0x620222(%rip),%rax	rax=0xba84b2
+0x0000000000554fe6<eval_sub+550>:eval.c:2068	cmp %rax,%rsi
+0x0000000000554fe9<eval_sub+553>:eval.c:2069	je 0x554ff0 <eval_sub+560>	rip=0x554ff0
+0x0000000000554ff0<eval_sub+560>:lisp.h:703	mov %eax,%edx	edx=0xba84b2
+0x0000000000554ff2<eval_sub+562>:lisp.h:703	and $0x7,%edx	edx=0x2
+0x0000000000554ff5<eval_sub+565>:eval.c:2070	cmp $0x6,%edx
+0x0000000000554ff8<eval_sub+568>:eval.c:2070	je 0x555010 <eval_sub+592>	rip=0x554ffa
+0x0000000000554ffa<eval_sub+570>:eval.c:2073	mov %r12,%rdi	rdi=0xba84b2
+0x0000000000554ffd<eval_sub+573>:eval.c:2073	callq 0x543740 <Fsymbol_value>
+0x0000000000543740<Fsymbol_value+0>:data.c:1160	push %rbx	M8[0x7fffffffd808]=0x7fffffffd900 rsp=0x7fffffffd808
+0x0000000000543741<Fsymbol_value+1>:data.c:1160	mov %rdi,%rbx	rbx=0xba84b2
+0x0000000000543744<Fsymbol_value+4>:data.c:1163	callq 0x5436a0 <find_symbol_value>
+0x00000000005436a0<find_symbol_value+0>:lisp.h:703	mov %edi,%eax	eax=0xba84b2
+0x00000000005436a2<find_symbol_value+2>:data.c:1131	push %rbx	M8[0x7fffffffd7f8]=0xba84b2 rsp=0x7fffffffd7f8
+0x00000000005436a3<find_symbol_value+3>:lisp.h:703	and $0x7,%eax	eax=0x2
+0x00000000005436a6<find_symbol_value+6>:lisp.h:1009	cmp $0x2,%eax
+0x00000000005436a9<find_symbol_value+9>:lisp.h:1009	jne 0x543725 <find_symbol_value+133>	rip=0x5436ab
+0x00000000005436ab<find_symbol_value+11>:data.c:1135	sub $0x2,%rdi	rdi=0xba84b0
+0x00000000005436af<find_symbol_value+15>:data.c:1138	movzbl (%rdi),%edx	edx=0x98
+0x00000000005436b2<find_symbol_value+18>:data.c:138	shr %dl	dl=0x4c
+0x00000000005436b4<find_symbol_value+20>:data.c:1138	and $0x7,%edx	edx=0x4
+0x00000000005436b7<find_symbol_value+23>:data.c:1138	cmp $0x2,%dl
+0x00000000005436ba<find_symbol_value+26>:data.c:1138	je 0x5436fa <find_symbol_value+90>	rip=0x5436bc
+0x00000000005436bc<find_symbol_value+28>:data.c:1138	jbe 0x5436e0 <find_symbol_value+64>	rip=0x5436be
+0x00000000005436be<find_symbol_value+30>:data.c:1138	cmp $0x3,%dl
+0x00000000005436c1<find_symbol_value+33>:data.c:1138	je 0x5436d0 <find_symbol_value+48>	rip=0x5436c3
+0x00000000005436c3<find_symbol_value+35>:data.c:1138	cmp $0x4,%dl
+0x00000000005436c6<find_symbol_value+38>:data.c:1138	jne 0x543720 <find_symbol_value+128>	rip=0x5436c8
+0x00000000005436c8<find_symbol_value+40>:lisp.h:1640	mov 0x10(%rdi),%rax	rax=0xba84b2
+0x00000000005436cc<find_symbol_value+44>:data.c:1153	pop %rbx	rbx=M8[0x7fffffffd7f0] rsp=0x7fffffffd7f8
+0x00000000005436cd<find_symbol_value+45>:data.c:1153	c3 retq
+0x0000000000543749<Fsymbol_value+9>:data.c:1164	cmp 0x631ad0(%rip),%rax
+0x0000000000543750<Fsymbol_value+16>:data.c:1164	je 0x543754 <Fsymbol_value+20>	rip=0x543752
+0x0000000000543752<Fsymbol_value+18>:data.c:1168	pop %rbx	rbx=M8[0x7fffffffd800] rsp=0x7fffffffd808
+0x0000000000543753<Fsymbol_value+19>:data.c:1168	c3 retq
+0x0000000000555002<eval_sub+578>:eval.c:2073	mov %rax,%rbx	rbx=0xba84b2
+0x0000000000555005<eval_sub+581>:eval.c:2073	jmpq 0x554dea <eval_sub+42>	rip=0x554dea
+0x0000000000554dea<eval_sub+42>:eval.c:2268	lea -0x28(%rbp),%rsp	rsp=0x7fffffffd888
+0x0000000000554dee<eval_sub+46>:eval.c:2268	mov %rbx,%rax	rax=0xba84b2
+0x0000000000554df1<eval_sub+49>:eval.c:2268	pop %rbx	rbx=M8[0x7fffffffd888] rsp=0x7fffffffd890
+0x0000000000554df2<eval_sub+50>:eval.c:2268	pop %r12	r12=M8[0x7fffffffd890] rsp=0x7fffffffd898
+0x0000000000554df4<eval_sub+52>:eval.c:2268	pop %r13	r13=M8[0x7fffffffd898] rsp=0x7fffffffd8a0
+0x0000000000554df6<eval_sub+54>:eval.c:2268	pop %r14	r14=M8[0x7fffffffd8a0] rsp=0x7fffffffd8a8
+0x0000000000554df8<eval_sub+56>:eval.c:2268	pop %r15	r15=M8[0x7fffffffd8a8] rsp=0x7fffffffd8b0
+0x0000000000554dfa<eval_sub+58>:eval.c:2268	pop %rbp	rbp=M8[0x7fffffffd8b0] rsp=0x7fffffffd8b8
+0x0000000000554dfb<eval_sub+59>:eval.c:2268	c3 retq
+0x0000000000555124<eval_sub+868>:eval.c:2165	mov %r15,%rdi	rdi=0xba84b2
+0x0000000000555127<eval_sub+871>:eval.c:2167	mov %rax,-0x8(%rbx)	M[0x7fffffffd8f8]=0xba84b2
+0x000000000055512b<eval_sub+875>:eval.c:2165	callq 0x540a30 <Fcdr>
+0x0000000000540a30<Fcdr+0>:lisp.h:703	mov %edi,%eax	eax=0xba84b2
+0x0000000000540a32<Fcdr+2>:lisp.h:703	and $0x7,%eax	eax=0x2
+0x0000000000540a35<Fcdr+5>:lisp.h:1084	cmp $0x6,%eax
+0x0000000000540a38<Fcdr+8>:lisp.h:1084	je 0x540a50 <Fcdr+32>	rip=0x540a3a
+0x0000000000540a3a<Fcdr+10>:lisp.h:2354	mov 0x6347c7(%rip),%rax	rax=0xba84b2
+0x0000000000540a41<Fcdr+17>:lisp.h:1085	cmp %rax,%rdi
+0x0000000000540a44<Fcdr+20>:lisp.h:1085	jne 0x540a55 <Fcdr+37>	rip=0x540a46
+0x0000000000540a46<Fcdr+22>:data.c:584	c3 retq
+0x0000000000555130<eval_sub+880>:eval.c:2165	mov %rax,%r15	r15=0xba84b2
+0x0000000000555133<eval_sub+883>:eval.c:2165	cmp -0x88(%rbp),%rbx
+0x000000000055513a<eval_sub+890>:eval.c:2165	jne 0x555110 <eval_sub+848>	rip=0x55513c
+0x000000000055513c<eval_sub+892>:eval.c:2173	shl $0x5,%r13	r13=0x160
+0x0000000000555140<eval_sub+896>:eval.c:185	lea -0x70(%rbp),%rdi	rdi=0x7fffffffd8f0
+0x0000000000555144<eval_sub+900>:eval.c:2173	mov %r13,%rax	rax=0x160
+0x0000000000555147<eval_sub+903>:eval.c:2173	add 0x62013a(%rip),%rax	rax=0xfba320
+0x000000000055514e<eval_sub+910>:eval.c:185	mov %rdi,0x10(%rax)	M8[0xfba330]=0x7fffffffd8f0
+0x0000000000555152<eval_sub+914>:eval.c:186	mov -0x90(%rbp),%rdi	rdi=0x1
+0x0000000000555159<eval_sub+921>:eval.c:186	mov %rdi,0x18(%rax)	M8[0xfba338]=0x1
+0x000000000055515d<eval_sub+925>:eval.c:2175	cmp $0x8,%r14w
+0x0000000000555162<eval_sub+930>:eval.c:2175	ja 0x55529a <eval_sub+1242>	rip=0x555168
+0x0000000000555168<eval_sub+936>:eval.c:2175	movzwl %r14w,%r14d	r14d=0x2
+0x000000000055516c<eval_sub+940>:eval.c:2175	jmpq *0x5eb678(,%r14,8)	rip=0x55524b
+0x000000000055524b<eval_sub+1163>:eval.c:2184	mov -0x68(%rbp),%rsi	rsi=0xba84b2
+0x000000000055524f<eval_sub+1167>:eval.c:2184	mov -0x70(%rbp),%rdi	rdi=0xce39231c6f4c71bc
+0x0000000000555253<eval_sub+1171>:eval.c:2184	callq *0x8(%r12)
+0x00000000005724e0<Fprint+0>:print.c:686	push %rbp	M8[0x7fffffffd8b8]=0x7fffffffd960 rsp=0x7fffffffd8b8
+0x00000000005724e1<Fprint+1>:print.c:686	mov %rsp,%rbp	rbp= 0x7fffffffd8b0
+0x00000000005724e4<Fprint+4>:print.c:686	push %r15	M8[0x7fffffffd8b0]=0xba84b2 rsp=0x7fffffffd8a8
+0x00000000005724e6<Fprint+6>:print.c:686	mov %rsi,%r15	r15=0xba84b2
+0x00000000005724e9<Fprint+9>:print.c:686	push %r14	M8[0x7fffffffd8a8]=0x2 rsp=0x7fffffffd8a0
+0x00000000005724eb<Fprint+11>:print.c:686	mov %rsi,%r14	r14=0xba84b2
+0x00000000005724ee<Fprint+14>:print.c:686	push %r13	M8[0x7fffffffd8a0]=0x160 rsp=0x7fffffffd8a0
+0x00000000005724f0<Fprint+16>:print.c:686	push %r12	M8[0x7fffffffd898=0xafb8e0 rsp=0x7fffffffd898
+0x00000000005724f2<Fprint+18>:print.c:686	push %rbx	M8[0x7fffffffd890]=0x7fffffffd900 rsp=0x7fffffffd890
+0x00000000005724f3<Fprint+19>:print.c:686	sub $0x48,%rsp	rsp=0x7fffffffd840
+0x00000000005724f7<Fprint+23>:lisp.h:2894	mov 0x602e0a(%rip),%rax	rax=0xfba340
+0x00000000005724fe<Fprint+30>:print.c:686	mov %rdi,-0x38(%rbp)	M8[0x7fffffffd878]=0xce39231c6f4c71bc
+0x0000000000572502<Fprint+34>:lisp.h:2894	sub 0x602d7f(%rip),%rax	rax=0x180
+0x0000000000572509<Fprint+41>:print.c:687	mov 0x601cc8(%rip),%rbx	rbx=0xbaed70
+0x0000000000572510<Fprint+48>:lisp.h:2894	sar $0x5,%rax	rax=0xc
+0x0000000000572514<Fprint+52>:lisp.h:2894	mov %rax,-0x48(%rbp)	M8[0x7fffffffd868]=0xc
+0x0000000000572518<Fprint+56>:print.c:687	mov 0x138(%rbx),%rax	rax=0xba84e2
+0x000000000057251f<Fprint+63>:print.c:687	mov %rax,-0x60(%rbp)	M8[0x7fffffffd850]=0xba84e2
+0x0000000000572523<Fprint+67>:lisp.h:2354	mov 0x602cde(%rip),%rax	rax=0xba84b2
+0x000000000057252a<Fprint+74>:lisp.h:2354	mov %rax,-0x68(%rbp)	M8[0x7fffffffd848]=0xba84b2
+0x000000000057252e<Fprint+78>:print.c:690	cmp %rax,%rsi
+0x0000000000572531<Fprint+81>:print.c:690	je 0x572818 <Fprint+824>	rip=0x572818
+0x0000000000572818<Fprint+824>:print.c:691	mov 0x602361(%rip),%r14	r14=0xba84e2
+0x000000000057281f<Fprint+831>:print.c:693	cmp %rsi,%r14
+0x0000000000572822<Fprint+834>:print.c:693	jne 0x5729d1 <Fprint+1265>	rip=0x5729d1
+0x00000000005729d1<Fprint+1265>:print.c:693	mov %r14,%r15	r15=0xba84e2
+0x00000000005729d4<Fprint+1268>:print.c:693	jmpq 0x572537 <Fprint+87>	rip=0x572537
+0x0000000000572537<Fprint+87>:lisp.h:703	mov %r15d,%edx	edx=0xba84e2
+0x000000000057253a<Fprint+90>:lisp.h:703	and $0x7,%edx	edx=0x2
+0x000000000057253d<Fprint+93>:lisp.h:2430	cmp $0x5,%edx
+0x0000000000572540<Fprint+96>:lisp.h:2430	je 0x5727a8 <Fprint+712>	rip=0x572546
+0x0000000000572546<Fprint+102>:lisp.h:2384	cmp $0x3,%edx
+0x0000000000572549<Fprint+105>:lisp.h:2384	je 0x572650 <Fprint+368>	rip=0x57254f
+0x000000000057254f<Fprint+111>:print.c:693	cmp %rax,%r15	
+0x0000000000572552<Fprint+114>:print.c:693	je 0x5727f7 <Fprint+791>	rip=0x572558
+0x0000000000572558<Fprint+120>:print.c:693	cmp %r15,0x602bb9(%rip)
+0x000000000057255f<Fprint+127>:print.c:693	mov $0xffffffffffffffff,%r12	r12=0xffffffffffffffff
+0x0000000000572566<Fprint+134>:print.c:687	movb $0x0,-0x51(%rbp)	M8[0x7fffffffd85r]=0x0
+0x000000000057256a<Fprint+138>:print.c:687	mov %r12,-0x40(%rbp)	M8[0x7fffffffd870]=0xffffffffffffffff
+0x000000000057256e<Fprint+142>print.c:687	mov %r12,%r13	r13=0xffffffffffffffff
+0x0000000000572571<Fprint+145>:print.c:687	mov %r12,-0x50(%rbp)	M8[0x7fffffffd860]=0xffffffffffffffff
+0x0000000000572575<Fprint+149>:print.c:693	je 0x57275e <Fprint+638>	rip=0x57275e
+0x000000000057275e<Fprint+638>:print.c:693	cmpb $0x0,0x5fec05(%rip)   
+0x0000000000572765<Fprint+645>:print.c:693	jne 0x57257b <Fprint+155>	rip=0x57257b
+0x000000000057257b<Fprint+155>:print.c:694	mov %r15, %rsi	rsi=0xba84e2
+0x000000000057257e<Fprint+158>:print.c:694	mov $0xa,%edi	edi=0xa
+0x0000000000572583<Fprint+163>:print.c:694	callq 0x56cb50 <printchar>
+0x000000000056cb50<printchar+0>:print.c:217	push %r13	M8[0x7fffffffd838]=0xffffffffffffffff rsp=0x7fffffffd838
+0x000000000056cb52<printchar+2>:print.c:217	mov %rsi,%r13	r13=0xba84e2
+0x000000000056cb55<printchar+5>:print.c:217	push %r12	M8[0x7fffffffd830]=0xffffffffffffffff rsp=0x7fffffffd830
+0x000000000056cb57<printchar+7>:print.c:217	push %rbp	M8[0x7fffffffd828]=0x7fffffffd8b0 rsp=0x7fffffffd828
+0x000000000056cb58<printchar+8>:print.c:217	push %rbx	M8[0x7fffffffd820]=0xbaed70	rsp=0x7fffffffd820
+0x000000000056cb59<printchar+9>:print.c:217	mov %edi,%ebx	ebx=0xa
+0x000000000056cb5b<printchar+11>:print.c:217	sub $0x18,%rsp	rsp=0x7fffffffd800
+0x000000000056cb5f<printchar+15>:lisp.h:2354	mov 0x6086a2(%rip),%rcx	rcx=0xba84b2
+0x000000000056cb66<printchar+22>:print.c:218	cmp %rcx,%rsi
+0x000000000056cb69<printchar+25>:print.c:218	je 0x56cb78 <printchar+40>	rip=0x56cb6b
+0x000000000056cb6b<printchar+27>:print.c:218	cmp 0x6085a6(%rip),%rsi
+0x000000000056cb72<printchar+34>:print.c:218	jne 0x56cc40 <printchar+240>	rip=0x56cb78
+0x000000000056cb78<printchar+40>:print.c:223	cmp $0x7f,%ebx
+0x000000000056cb7b<printchar+43>:print.c:223	ja 0x56cbf0 <printchar+160>	rip=0x56cb7d
+0x000000000056cb7d<printchar+45>:print.c:223	mov %bl,(%rsp)	M8[0x7fffffffd800]=0xa
+0x000000000056cb80<printchar+48>:print.c:223	mov $0x1,%ebp	ebp=0x1
+0x000000000056cb85<printchar+53>:print.c:223	mov %rsp,%r12	r12=0x7fffffffd800
+0x000000000056cb88<printchar+56>:print.c:225	cmp %rcx,0x607ee9(%rip) 
+0x000000000056cb8f<printchar+63>:print.c:225	je 0x56cb9e <printchar+78>	rip=0x56cb9e
+0x000000000056cb9e<printchar+78>print.c:225	movzbl 0x6048f3(%rip),%eax	eax=0x0
+0x000000000056cba5<printchar+85>:print.c:225	test %al,%al
+0x000000000056cba7<printchar+87>:print.c:225	jne 0x56cd40 <printchar+496>	rip=0x56cbad
+0x000000000056cbad<printchar+93>:print.c:227	cmp %rcx,%r13
+0x000000000056cbb0<printchar+96>:print.c:227	je 0x56ccc8 <printchar+376>	rip=0x56cbb6
+0x000000000056cbb6<printchar+102>:print.c:237	cmpb $0x0,0x6047ad(%rip)
+0x000000000056cbbd<printchar+109>:print.c:237	je 0x56cc60 <printchar+272>	rip=0x56cbc3
+0x000000000056cbc3<printchar+115>:print.c:239	mov 0x592066(%rip),%rcx	rcx=0x7ffff20a7400
+0x000000000056cbca<printchar+122>:print.c:239	movslq %ebp,%rdx	rdx=0x1
+0x000000000056cbcd<printchar+125>:print.c:239	mov %r12,%rdi	rdi=0x7fffffffd800
+0x000000000056cbd0<printchar+128>:print.c:239	mov $0x1,%esi	esi=0x1
+0x000000000056cbd5<printchar+133>:print.c:239	callq 0x4170a0 <fwrite@plt>
+0x00000000004170a0<fwrite@plt+0>:fwrite@plt()	jmpq *0x417ae2(%rip)	rip=0x4170a6
+0x00000000004170a6<fwrite@plt+6>:fwrite@plt()	pushq $0x36e	M8[0x7fffffffd7f8]=0x36e rsp=0x7fffffffd7f8
+0x00000000004170ab<fwrite@plt+11>:fwrite@plt()	jmpq 0x4139b0	rip=0x4139b0
+0x00000000004139b0<??()>:	pushq 0x419652(%rip)	M8[0x7fffffffd7f0]= 0x82d002 rsp= 0x7fffffffd7f0
+0x00000000004139b6<??()>:	jmpq *0x419654(%rip)	rip=0x7ffff7df0210
+0x00007ffff7df0210<_dl_runtime_resolve+0>:	sub $0x78,%rsp	rsp=0x7fffffffd770
+0x00007ffff7df0214<_dl_runtime_resolve+4>:	mov %rax,0x40(%rsp)	M8[0x7fffffffd7b0]=0x0
+0x00007ffff7df0219<_dl_runtime_resolve+9>:	mov %rcx,0x48(%rsp)	M8[0x7fffffffd7b8]=0x7ffff20a7400
+0x00007ffff7df021e<_dl_runtime_resolve+14>:	mov %rdx,0x50(%rsp)	M8[0x7fffffffd7c0]=0x1
+0x00007ffff7df0223<_dl_runtime_resolve+19>:	mov %rsi,0x58(%rsp)	M8[0x7fffffffd7c8]=0x1
+0x00007ffff7df0228<_dl_runtime_resolve+24>:	mov %rdi,0x60(%rsp)	M8[0x7fffffffd7d0]=0x7fffffffd800
+0x00007ffff7df022d<_dl_runtime_resolve+29>:	mov %r8,0x68(%rsp)	M8[0x7fffffffd7d8]=0x4
+0x00007ffff7df0232<_dl_runtime_resolve+34>:	mov %r9,0x70(%rsp)	M8[0x7fffffffd7e0]=0x7fffffffd9a0
+0x00007ffff7df0237<_dl_runtime_resolve+39>:	bndmov %bnd0,(%rsp)	M8[0x7fffffffd770]= 
+0x00007ffff7df023c<_dl_runtime_resolve+44>:	bndmov %bnd1,0x10(%rsp)	M8[0x7fffffffd780]=
+0x00007ffff7df0242<_dl_runtime_resolve+50>:	bndmov %bnd2,0x20(%rsp)	M8[0x7fffffffd790]=
+0x00007ffff7df0248<_dl_runtime_resolve+56>:	bndmov %bnd3,0x30(%rsp)	M8[0x7fffffffd7A0]=
+0x00007ffff7df024e<_dl_runtime_resolve+62>:	mov 0x80(%rsp),%rsi	rsi=0x7fffffffd7f0
+0x00007ffff7df0256<_dl_runtime_resolve+70>:	mov 0x78(%rsp),%rdi	rdi=0x7fffffffd7e8
+0x00007ffff7df025b<_dl_runtime_resolve+75>:	callq 0x7ffff7de9690 <_dl_fixup>
+0x00007ffff7de9690<_dl_fixup+0>:	push %r12	M8[0x7fffffffd768]=0x7fffffffd800 rsp=0x7fffffffd768
+0x00007ffff7de9692<_dl_fixup+2>:	mov %rdi,%rax	rax=0x7ffff7ffe208
+0x00007ffff7de9695<_dl_fixup+5>:	mov %esi,%esi	esi=0x36e
+0x00007ffff7de9697<_dl_fixup+7>:	lea (%rsi,%rsi,2),%rcx	rcx=0x3004
+0x00007ffff7de969b<_dl_fixup+11>:	push %rbp	M8[0x7fffffffd760]=0x1 rsp=0x7fffffffd760
+0x00007ffff7de969c<_dl_fixup+12>:	push %rbx	M8[0x7fffffffd758]=0xa rsp=0x7fffffffd758
+0x00007ffff7de969d<_dl_fixup+13>:	sub $0x20,%rsp	rsp=0x7fffffffd730
+0x00007ffff7de96a1<_dl_fixup+17>:	mov 0x68(%rdi),%rdx	rdx=0x82cea8
+0x00007ffff7de96a5<_dl_fixup+21>:	mov 0x70(%rax),%rsi	rsi=0x82ceb8
+0x00007ffff7de96a9<_dl_fixup+25>:	mov 0x8(%rdx),%rdi	rdi=0x408520
+0x00007ffff7de96ad<_dl_fixup+29>:	mov 0xf8(%rax),%rdx	rdx=0x82cf28
+0x00007ffff7de96b4<_dl_fixup+36>:	mov 0x8(%rsi),%rsi	rsi=0x4022f8
+0x00007ffff7de96b8<_dl_fixup+40>:	mov 0x8(%rdx),%rdx	rdx=0x40da98
+0x00007ffff7de96bc<_dl_fixup+44>:	lea (%rdx,%rcx,8),%rcx	rcx=0x412ce8
+
+
+

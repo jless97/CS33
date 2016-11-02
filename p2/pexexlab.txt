@@ -1,0 +1,85 @@
+//pexexlab.txt
+//Lab Notebook for trace.tr procedure corresponding to what worked and what didn’t work:
+
+
+Purpose: 
+————————
+- To get familiar and more comfortable with using the GDB 
+- The goal was to examine how the GDB dealt with integer overflow due to the multiplication
+of various numbers
+- This was carried out by setting a breakpoint at the Ftimes function and slowly stepping
+through each machine instruction of Ftimes, as well as the function that Ftimes called 
+(i.e. arith_driver)
+	- Ftimes and arith_driver corresponded to the C source code of the files: data.c
+	and lisp.h
+- During the analysis of the Ftimes function and its calls, only two commands were used, 
+and these were si and i reg $register_name
+
+
+
+Process (Commands That Worked):
+———————————————————————————————
+ssh [username]@lnxsrv09.seas.ucla.edu
+
+- Connected to the Seasnet server 
+
+gdb ~eggert/bin64/bin/emacs-24.5
+
+- This command launched the GDB on the Seasnet server, and then opened the GNU Emacs text 
+editor
+
+(gdb) break Ftimes
+
+- As we were supposed to analysis Ftimes’ instructions and all of the instructions of the
+functions that Ftimes called, we set a breakpoint at Ftimes, and then analysis its
+instructions
+
+(gdb) r -batch -eval '(print (* 6997 -4398042316799 179))'
+
+- This command runs the Emacs Lisp arithmetic function corresponding to multiplication, 
+which multiples the arguments together, and then it prints out the product
+- However, since we want to analysis the machine instruction of this process, we had set
+a breakpoint at Ftimes, which will thus pass the control to the GDB to analysis Ftimes
+
+(gdb) set disassemble-next-line on
+
+- This command disassembles each line of code, which while using ‘si’, printing each 
+address, machine instruction, and the line of the corresponding C code
+- Originally, I tried to step through without this command, and the result was that when
+using ’si’, each line was not disassembled, and I was unable to see the machine
+instructions for each line 
+
+(gdb) si
+
+- This command is used in correspondence with set disassemble-next-line on to execute the
+next instruction by stepping into the functions
+- This was the predominant command used to step through the instructions of Ftimes, and
+arith_driver
+
+(gdb) i reg $register_name
+
+- This command is used to print the state of a particular register, which was useful
+to determine the modification of a register with a given machine instruction
+- For example, “i reg $rdi” prints the state of the %rdi register
+
+
+Misstep (What Didn’t Work):
+———————————————————————————
+(gdb) disas function_name
+
+- At first, I wasn’t entirely sure how to go about finding the trace instructions
+- For example, I set the breakpoint at Ftimes, and then thought that I was supposed to 
+disassemble each function that Ftimes seemingly called. It appeared that Ftimes called
+arith_driver, and then I used ‘disas arith_driver’. This seemed like arith_driver called
+several functions such as “marker_position” and “wrong_argument_type”, which in turn
+would call functions of their own.
+- Therefore, it appeared to be that Ftimes indirectly called a good amount of functions, 
+and that I would have to take traces for 1000+ lines of code
+- After some clarification through talking with TA’s and using Piazza, I was able to 
+figure out to disassemble each line of code, and noticed that after each ‘si’, the arrow
+would point to the proper line I should take down for the trace
+
+
+
+
+
