@@ -1,2 +1,2 @@
 # CS33
-Introduction to Computer Architecture
+Introduction to Computer Organization
