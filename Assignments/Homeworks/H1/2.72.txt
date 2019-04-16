@@ -1,0 +1,13 @@
+Problem 2.72
+
+(A)	The conditional statement never evaluates to less than zero in the 
+	original code. This is because the sizeof() operator returns a 
+	size_t type, which is an unsigned value. Thus, the conditional
+	statement will be implicitly converted to unsigned, which results
+	in the statement never being negative. The unsigned value is the
+	reason why the value is always copied to the buffer, even when
+	maxbytes is too small.
+
+(B)	Rewritten conditional statement:
+	
+	if (maxbytes >= sizeof(val))

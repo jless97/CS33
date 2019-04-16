@@ -1,0 +1,152 @@
+//3.67
+
+(A) eval Stack Frame before calling process:
+
+ _____________________________________ <- %rbp
+|
+|_____________________________________
+|
+|_____________________________________
+|
+|_____________________________________
+|
+|_____________________________________
+|
+|_____________________________________
+|
+|_____________________________________
+|
+|_____________________________________
+|
+|_____________________________________
+|
+|_____________________________________
+|z
+|_____________________________________ <- %rsp + 24
+|&z
+|_____________________________________ <- %rsp + 16
+|y
+|_____________________________________ <- %rsp + 8
+|x
+|_____________________________________ <- %rsp
+
+
+
+(B) What value does eval pass in its call to process?
+
+Before calling process, the eval function creates a variable s of type str A, and fills its members with the x, y, and z
+variables passed into the eval function. In terms of C code, the function eval passes str A s into process. In terms of 
+assembly code, eval is passing the %rsp pointer into process. This can be seen on line 8 for eval (i.e. “leaq 64(%rsp), %rdi).
+This line is saving into x the memory address calculated by adding 64 to the stack pointer. In effect, this is passing the
+%rsp pointer into process at the location where process will execute its code.
+
+
+
+(C) How does the code for process access the elements of structure argument s?
+
+Process makes use of the %rsp pointer to access the elements of str A s, and then to store them in the members of str B r.
+However, the exact offsets that were used in eval, are shifted down by 8 bytes due to the call to process. This is the case
+because the call instruction adds onto the stack a place where the return value will go (i.e. 8 bytes down in the stack frame
+drawing), and thus the stack pointer now points lower by 8 bytes. The access the elements of str A s can be seen on lines
+6, 8, and 9 of process due to the fact that the source instruction is using the stack pointer to retrieve the values. The line
+“movq 16(%rsp), %rcx” is accessing s.a[1] (having value of ‘y’), and storing it in r.a[0]. The line “movq 8(%rsp), %rcx” is 
+accessing s.a[0] (having value of ‘x’), and storing it in r.a[1]. Lastly, the line “movq %rdx, 16(%rdi)” is accessing s.p 
+(which holds the address of ‘z’) and is storing the value in r.q. Note that line 9 doesn’t contain an instruction involving
+%rsp, but this process of accessing ‘z’ from str A s was carried out in lines 3 and 4 of process, and the value stored in %rdx.
+
+
+
+(D) How does the code for process set the fields of result structure r?
+
+As discussed in 3.67.c, the fields of str B r contain values accessed from str A s. These fields are set by using the stack
+pointer to access str A s, and to move the values into str B r. The assembly code for process illustrates what registers 
+contain the values that s is moving to r. The register %rcx was used to store the values of s.a[1] and s.a[0] corresponding to
+lines 5 and 7 directly. The %rdx register was used to store the value of the s.p dereferenced. Lastly, the values stored in
+the %rcx and the %rdx register were moved to register %rdi (i.e. (%rdi), 8(%rdi), 16(%rdi)) corresponding to lines 6, 8, and 9.
+The register %rdi corresponds to the memory address location where the function process was being executed (which stems from
+the call instruction). 
+
+
+
+(E) Complete your diagram of the stack frame for eval…
+
+The function eval allocated 104 bytes onto the stack to carry out its procedure. The %rsp pointed to the return address, while
+str A s and str B r were stored at memory locations consisting of 24 bytes for their structures. As shown below, str A s 
+is located at locations from %rsp + 8 to %rsp + 32, while str B r is located at locations from %rsp + 64 to %rsp + 88. Between
+the two structures in the stack frame is a gap of 32 bytes. The reason for the gap between the structures is due to the property
+of alignment. After the return from process, eval access the elements of structure r by using the stack pointer and appropriate 
+offsets to access r.u[1], r.[0], and r.q, which correspond to lines 10, 11, and 12 of eval. 
+
+ _____________________________________ <- %rbp (base pointer)
+|
+|_____________________________________ <- %rsp + 104
+|
+|_____________________________________ <- %rsp + 96
+|
+|_____________________________________ <- %rsp + 88
+|z
+|_____________________________________ <- %rsp + 80
+|x
+|_____________________________________ <- %rsp + 72
+|y
+|_____________________________________ <- %rsp + 64
+|
+|_____________________________________ <- %rsp + 56
+|
+|_____________________________________ <- %rsp + 48
+|
+|_____________________________________ <- %rsp + 40
+|z
+|_____________________________________ <- %rsp + 32
+|&z
+|_____________________________________ <- %rsp + 24
+|y
+|_____________________________________ <- %rsp + 16
+|x
+|_____________________________________ <- %rsp + 8
+|ret 
+|_____________________________________ <- %rsp (stack pointer)
+
+
+
+(F) What general principles can you discern about how structure values are passed as function arguments…?
+
+Structures can be passed to functions in C just like any other type (i.e. passing by value or passing by reference). In terms of
+the corresponding assembly code, all that is required to access the structure passed into the function is the stack pointer,
+which can be used to access the various elements of the structure argument. In terms of how the struct is returned as a function 
+result, this can be seen in lines 10, 11, and 12 of eval. It appears as if the value is returned member-by-member, and a form of
+structure concatenation results. This corresponds to the fact that first %rax holds 72(%rsp), and then 64(%rsp) is added to %rax,
+and then 80(%rsp) is added to %rax. 
+
+
+
+//3.70
+
+(A)
+
+e1.p is at offset 0, e1.y is at offset 8, e2.x is at offset 0, while e2.next is at offset 8 as well. This is because the two 
+structures of the union share the same offset as the union type (i.e. offset 0). However, within the union, are two structs, and
+thus the proper offsets correspond to e1.y and e2.next.
+
+(B)
+
+The union structure requires 16 total bytes. This is because of the fact that it is a union, and only requires the number of 
+bytes of the largest data member within. Each structure consists of 16 bytes, and thus, 16 bytes total is required for the union.
+
+
+(C)
+
+void proc (union else *up) {
+	up->e1.y = *(up->e2.next->e1.p) - up->e2.next->e1.y;
+}
+
+
+
+
+
+
+
+
+
+
+

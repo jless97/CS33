@@ -1,0 +1,116 @@
+//answers.txt
+
+(1) 
+
+The reason that r -batch -eval '(print (* 6997 -4398042316799 179))' did not 
+produce the right mathematical result was due to overflow. This overflow took place
+with the line:  0x541efa<arith_driver+506>:lisp.h:700 lea 0x0(,%rbx,4),%rax. This 
+line was the reason that the %rax register didn’t return the correct value. For the
+multiplication of 6997 * -4398042316799 * 179, the %rbx register held the result of
+6997 * -4398042316799. Some instructions later, there was a multiplication between
+the %rdi register (which held value 179), and %rbx (which held the multiplication of
+the other two operands). Thus the %rbx register held the correct result of the 
+multiplication (which was approximately -5.51 * 10^18). However, with the given line
+stated above (at address 0x541efa), there was a load effective address instruction 
+that multiplied the %rbx register by 4, and then stored it in the %rax register. This
+instruction led to overflow, and %rax then held a value of approximately 
+-3.59 * 10^18, which was less than what the correct result should have been.
+
+
+(2) 
+
+The shell command emacs -batch -eval '(print most-positive-fixnum)' outputs
+2305843009213693951 due to the following definitions from data.c and Lisp.h:
+
+On lines 3678 to 3681, MOST_POSTIIVE_FIXNUM is described as the largest value that
+is representable in a Lisp integer. It then goes on to define it as 
+Vmost_positive_fixnum = make_number(MOST_POSITIVE_FIXNUM)… where upon looking in the
+Lisp.h header, MOST_POSITIVE_FIXNUM is described in more detail, and the output is
+made clear.
+
+On Line 87 of Lisp.h, an EMACS_INT is described as a signed integer wide enough to
+hold an Emacs value and on line 88, an EMACS_INT_MAX is the max value of EMACS_INT. 
+On line 107, an EMACS_INT_MAX is defined as #define EMACS_INT_MAX LONG_MAX as we
+are using x86-64, where LONG_MAX has the value 0x7fffffffffffffff (having decimal
+value of 9223372036854775807). On line 692, MOST_POSITIVE_FIXNUM is defined as
+#define MOST_POSITIVE_FIXNUM (EMACS_INT_MAX >> INTTYPEBITS). INTTYPEBITS is defined
+on line 257 and 258, where it represents the number of bits in a Lisp fixnum tag,
+which is equal to 2. Therefore, MOST_POSITIVE_FIXNUM is equal to LONG_MAX right 
+shifted by 2, which is then equal to 0x1fffffffffffffff. This has a decimal value of
+2305843009213693951, which is what the given shell command outputs.
+
+
+(3)
+
+The shell command emacs -batch -eval '(print (* most-positive-fixnum most-positive-
+fixnum))' outputs only 1 due to overflow that occurs in the multiplication process.
+The above command takes the most-positive-fixnum and multiples it by itself. Now, 
+most-positive-fixnum has a value of 0x1fffffffffffffff, so the shell command executes
+the multiplication of 0x1fffffffffffffff * 0x1fffffffffffffff. However, since 
+most-positiev-fixnum represents the largest value that is representable in a Lisp
+object, this multiplication is obviously going to result in multiplication overflow.
+
+Looking at the C source code, and specifically in data.c at lines 2637 to 2643, the
+arith_driver function has a specific set of instructions for dealing with 
+multiplication overflow. First, it will store the result of most-postive-fixnum 
+multiplied with itself in a variable ab (i.e. ab = a * b). Then, it will and ab with
+INTMASk and store the return result in a variable accum (i.e. accum = ab & INTMASK).
+
+Looking in Lisp.h at line 449, INTMASK is defined as:
+#define INTMASK (EMACS_INT_MAX >> (INTTYPEBITS - 1)). EMACS_INT_MAX is defined by
+LONG_MAX (0x7fffffffffffffff), and then LONG_MAX is shifted to the right by 1, which
+evaluates to 0x3fffffffffffffff. Therefore, INTMASK has the value 0x3fffffffffffffff.
+
+Now, ab evaluates to hexadecimal value of 0x3fffffffffffffffc000000000000001, which
+obviously shows overflow of 8 bytes. However, applying the and with INTMASK, yields 
+the result of 0x00000000000000000000000000000001. As there is 8 bytes of overflow, 
+the high-order 8 bytes are dropped, and the value of 0x0000000000000001, or simply, 1
+is output.
+
+(4)
+
+If the Emacs executable was compiled with -fsanitize=undefined, there would be no
+resulting problems that the trace would run into. However, there would be an increase
+in the number of steps do the behavior of -fsanitize=undefined. As seen in the 
+testovf portion of this project, when overflow is detected, -fsanitize=undefined 
+executes a set of jumps to the corresponding ubsan builtin function. All this does,
+is print out an error message, but will continue executing the remaining machine instructions of arith_driver. As shown in question 3, arith_driver deals with the 
+multiplication overflow in its own way. Therefore, compiling with 
+-fsanitize=undefined would result in the trace having no problems, except for the
+generation of additional machine code due to the ubsan function calls.
+
+(5)
+
+If the Emacs executable was compiled with -fwrapv, there would be no resulting
+problems of the trace as well. However, there would be no overflow checking that 
+takes place due to the protocol of wrap semantics, which allows for overflow to 
+occur by wrapping around using two’s-complement. Therefore, no problems with 
+execution would result and no errors would occur, except for the fact that again, the
+wrong mathematical answer would be returned due to the wrap-around of the overflow.
+
+(6)
+
+If the Emacs executable was compiled using -fwrapv, then the performance could be
+improved by removing the overflow checker for multiplication (i.e.
+INT_MULTIPLY_OVERFLOW function). The way the C source code is now, it checks for 
+each case of arithmetic overflow using their respective overflow function checkers.
+Considering only integer multiplication as the question pertains to, then several
+lines of code, and the multiplication overflow check can be removed (which 
+corresponds to lines 2638, and the subsequent lines due to this overflow check. 
+Because the executable would be compiled using wrap semantics, there would be no
+reason to check for the overflow in Emacs, and thus the lines stated above can be
+skipped, and the computation of the multiplication is all that needs to occur. 
+
+(7)
+
+Given the shell command used for the trace, and multiplication operands with only 
+three or fewer operands, the increase in efficiency of the Emacs execution while 
+compiling with -fwrapv isn’t too significant. As seen by doing the trace, there were
+several lines of machine code doing the check for overflow. However, if the number
+of operands for multiplication was increased, then this would result in an increase
+in the number of machine instructions, and results in a decrease in efficiency.
+Therefore, if there was a large number of operands in the multiplication command, 
+then this would result in a significant increase in the number of machine 
+instructions, and a significant decrease in efficiency. Because of this, using 
+-fwrapv to compile the Emacs execution could result in a significant increase in
+efficiency given certain circumstances.

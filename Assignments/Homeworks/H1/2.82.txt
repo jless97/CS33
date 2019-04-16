@@ -1,0 +1,49 @@
+2.82
+
+(A)	(x<y) == (-x>-y)
+
+	Not always true.
+
+	Counter Example: 
+	If x = TMin, and y is any value not TMin. This is because the 
+	negative of TMin still evaluates to TMin. So, the RHS of the 
+	equation will be wrong in this case, as TMin is the lowest value
+	and is certainly not greater than -y for any such value.
+
+(B)	((x+y)<<4) + y-x == 17*y+15*x
+
+	Always true.
+
+	The statement (x+y)<<4 can be rewritten as (x+y) * 2^4. The left
+	shift acts as multiplying the object by 2^n power for (x+y)<<n.
+	After multiplying x and y by 16, the left side will produce the
+	same result as the RHS of the equation.
+
+(C)	~x+~y+1 == ~(x+y)
+	
+	Always true.
+
+	~x evaluates to -x-1, and the same goes for ~y. Therefore, the LHS
+	can be rewritten as (-x-1)+(-y-1)+1, which comes out to -x-y-1. 
+	Similarly, the RHS can be rewritten as well in the same manner,
+	also producing the result -x-y-1. 
+
+(D)	(ux-uy) == -(unsigned)(y-x)
+
+	Always true.
+
+	The bit representations for the negation operation are the same for
+	signed and unsigned using Two’s-complement for the bit strings. 
+
+(E)	((x>>2)<<2) <= x
+
+	Always true.
+
+	First an arithmetic right shift is performed, and then a left shift.
+	The first shift leads to sign extending the first two bits. However,
+	the left shift removes the last two bits, and replaces them with
+	zeros. So, if the last two bits were originally one’s, then they
+	would become zeros, and if they were originally zeros, then the 
+	bits would remain the same. Therefore, the LHS of the equation will
+	always be less than or equal to the original expression.
+	

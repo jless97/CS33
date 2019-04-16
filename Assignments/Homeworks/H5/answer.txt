@@ -1,0 +1,45 @@
+//Homework 5
+//Problems: 12.18 and 12.24
+
+12.18
+
+(A) The trajectory in this case is not safe because as the path continues, 
+when it comes to L1, it enters the unsafe region.
+
+(B) The trajectory is safe as it never enters the unsafe region.
+
+(C) The trajectory in this case is not safe because as the path continues,
+when it comes to L2, it enters the unsafe region.
+
+12.24
+
+The RIO functions are thread-safe, but are they also reentrant?
+
+RIO Functions:
+
+ssize_t rio_readn(int fd, void *usrbuf, size_t n);
+ssize_t rio_writen(int fd, void *usrbuf, size_t n);
+void rio_readinitb(rio_t *rp, int fd);
+ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen);
+ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n);
+
+First of all, there can be two types of reentrant functions: either 
+explicitly reentrant or implicitly reentrant. Explicitly reentrant functions
+can be determined by inspection in which all of the function arguments are
+passed by value (i.e. not pointers), and all data references are to local
+automatic stack variables (i.e. no static or global variables). Implicitly
+reentrant functions are reentrant only if the calling threads are careful to
+pass pointers to non shared data.
+
+Now,from looking at all of the RIO functions, it is clear that not all of the
+arguments are passed by value, and some arguments are passed by reference 
+(i.e. rp and usrbuf). Therefore, it is safe to assume that the RIO functions 
+are not explicitly reentrant functions.
+
+However, they could still be implicitly reentrant functions, but seeing as
+reentrant functions are dependent on both the caller and the callee, the RIO
+functions being reentrant is dependent on the caller not passing in pointers
+that access the same location of memory. Therefore, because it is mainly up
+to the caller to not pass in pointers accessing shared data, the RIO functions could be considered to be implicitly reentrant in the best case scenario (i.e. when the caller passes in pointers accessing non shared data),
+and not reentrant if the opposite were to occur (i.e. the caller passes in 
+pointers that access shared data).

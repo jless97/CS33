@@ -1,0 +1,56 @@
+//random.txt
+//2.89
+
+(A)(float)x == (float)dx
+
+Always true.
+
+Before dx gets converted from a double to a float, it is first converted from an int to a double. Now, conversion from an int to a double is perfectly fine as the numeric value is preserved due to the greater range and greater precision of the double type. Even the largest int value (i.e. INT_MAX) can be carefully stored within the double type. This also holds for conversion of an int to a float. There could be some rounding errors, but a float can hold the maximum value of an int without overflow occurring. Therefore, conversion from the double to the float or int to float will abide by the same rounding rules. 
+
+Now, if it were the case that dx was not initially a conversion from an int value, then this could lead to overflow occurring. This is because double has a greater range and precision than the float type does. So, in some cases of conversion from double to float, overflow could occur, and the above statement wouldn’t always be true. However, the reason the statement IS always true is due to the fact that the conversion first begins with the int type, which can be represented by both the float and double types.
+
+—————————————————————————————————————————————————————————————————————————————————————
+(B) dx - dy == (double)(x - y)
+
+Not always true.
+
+This equation is not always true due to the fact that the LHS of the equation first converts x and y to doubles, and then does the arithmetic negation operation. On the other hand, the RHS first does the arithmetic negation operation of the integers, and then converts the int result to a double.
+
+An example that shows the equation is not always true, is when x = INT_MAX, and 
+y = -1. Looking at the RHS, x - y would lead to overflow, as x - y can be rewritten as INT_MAX + 1. Therefore, the arithmetic operation overflows, and then this result is converted to a double. On the LHS, both x and y are converted to doubles, which is perfectly acceptable and the numeric values are both preserved. However, when taking dx - dy, this operation doesn’t overflow due to the greater range of the double type. Therefore, the LHS will have an acceptable value, while the RHS experiences an integer overflow, and then this value is converted to a double. The value of x - y could differ on different machines due to how overflow is handled (i.e. wrap
+semantics).
+
+—————————————————————————————————————————————————————————————————————————————————————
+(C) (dx + dy) + dz == dx + (dy + dz)
+
+Always true. 
+
+The reason that this equation is always true is due to the fact that dx, dy, and dz were initially ints that were converted to doubles. 
+
+It first appeared as if it would not always be true due to the fact that floating point addition is not associative. This would lead to an example in which the equation would not be true, if for example dx = 3.14, dy = 1e20, and dz = -1e20. Thus,dx + dy would equal 1e20 due to rounding, and then 1e20 - 1e20 = 0.0. On the RHS, dy + dz would result in a value of 0.0 initially. And then this would be added to dx, so RHS would have a value of 3.14, which is not equal to the LHS value, which is equal to 0.0.
+
+However, conversion from int to double preserves the numeric value due to the greater range, and therefore, despite the non-associativity property of floating point addition, the statement is always true.
+—————————————————————————————————————————————————————————————————————————————————————
+(D) (dx * dy) * dz == dx * (dy * dz)
+
+Not always true. 
+
+The reason for this stems from the fact that floating point arithmetic of 
+multiplication is not associative. In addition, if multiplying two very large 
+numbers, then overflow could occur, and varying rounding errors would result. For
+example, if x = INT_MAX, y = INT_MAX - 1, and z = INT_MAX - 2, then the equation would yield overflow for the LHS and the RHS. However, since it is not associative, the rounding errors would yield values on both sides that are not equal in comparison. 
+
+—————————————————————————————————————————————————————————————————————————————————————
+(E) dx/dx == dz/dz 
+
+Not always true.
+
+The equation is not always true by using denormalized and/or a special case of floating points.For example, if x = 0, and z = 1 (a nonzero value), then the LHS would produce +0.0/+0.0, which results in a NaN. The RHS would yield a result of 1/1, which is equal to 1.0. Therefore, the two sides are not equal, as a NaN is not equal to any value, nor another NaN.
+
+—————————————————————————————————————————————————————————————————————————————————————
+Equations (B) and (D) are affected if compiled with -fwrapv due to the fact that operations within their equations could lead to overflow occurring. The overflow would result in wrap semantics taking place, and therefore, the overall result could be altered, and produce an incorrect result.
+
+
+
+
+

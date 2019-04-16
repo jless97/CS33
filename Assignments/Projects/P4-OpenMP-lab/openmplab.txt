@@ -1,0 +1,220 @@
+//openmplab.txt
+//Lab Notebook outlining the procedure of this project
+
+Process:
+————————
+
+scp -r Desktop/openmplab [username]@lnxsrv07.seas.ucla.edu:Desktop
+
+- Copied over the openmplab files to the Seasnet server from my home desktop
+
+ssh [username]@lnxsrv07.seas.ucla.edu
+
+- Connected to the Seasnet server
+
+cd Desktop
+cd openmplab
+
+- Moved to the correct directory to begin the project
+
+Step 1:
+
+make seq
+./seq
+
+- Before making any changes to the func.c file, I first compiled a sequential 
+executable of the program to get the initial times for the FUNC TIME and the TOTAL 
+TIME:
+	FUNC TIME : 0.491183
+	TOTAL TIME : 2.327205
+
+Step 2:
+
+make seq GPROF=1
+gprof seq | less
+
+- Next, the sequential executable was compiled using the GPROF profiler in order to
+determine where the bottleneck in the program is, so that I can find the function
+that can be potentially optimized (or run in parallel), and thus speed up the 
+performance of the program
+- The commands above generated a large table that included the total time in seconds,
+and percentage of the overall run time of each of the functions in the program
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 57.22      0.36     0.36       30    12.02    12.35  func1
+ 23.84      0.51     0.15                             rand2
+  6.36      0.55     0.04        1    40.05    40.05  addSeed
+  4.77      0.58     0.03                             findIndexBin
+  1.59      0.59     0.01   983042     0.00     0.00  elapsed_time
+  1.59      0.60     0.01   491520     0.00     0.00  findIndex
+  1.59      0.61     0.01        1    10.01    10.01  dilateMatrix
+  1.59      0.62     0.01        1    10.01    10.01  imdilateDisk
+  1.59      0.63     0.01                             sequence
+  0.00      0.63     0.00  5177344     0.00     0.00  rand1
+  0.00      0.63     0.00       16     0.00     0.00  fillMatrix
+  0.00      0.63     0.00       15     0.00     0.00  func2
+  0.00      0.63     0.00       15     0.00     0.00  func3
+  0.00      0.63     0.00       15     0.00     0.00  func4
+  0.00      0.63     0.00       15     0.00     0.00  round
+  0.00      0.63     0.00        2     0.00     5.01  func5
+  0.00      0.63     0.00        1     0.00     0.00  func0
+  0.00      0.63     0.00        1     0.00     0.00  get_time
+
+- As shown in the table above, func1 occupies an incredibly large amount of time in 
+the total run of the program at an astounding 57.22%
+- The goal of this assignment is to only change func.c,and the table above is proof 
+of that, due to the large amount of time consumed on func1
+- Also note that func0, and func2-func5 show up in the table as taking up 0% of the
+overall run time, and thus the main bottleneck is in func1
+
+Step 3:
+
+emacs func.c
+
+- Now that I know what part of the function needs optimizing, I used emacs to edit
+the func.c source code
+- As I am changing one function, I went ahead and both optimized and ran in parallel
+the other functions as well in func.c
+- In order to speed up the program, I used methods of optimization learned in Ch.5
+such as reducing the amount of function calls, reducing the amount of memory 
+accesses (i.e. using local variables instead of going into pointers or arrays each 
+time), and using conditional branching to avoid using an if/else statement in one
+instance
+- In addition to that, I used the OpenMP methods by launching threads to do the work
+in parallel among multiple processors (instead of sequential coding)
+- In this way, to use parallelism, a set of pre-processors was used to get certain
+pieces of the code to run in parallel
+	Ex: #pragma omp parallel for…
+- By using specific openMP preprocessor directives, certain blocks of code were made
+private, so that multiple processors could run in parallel, as well as other 
+instances in which parallelism was used to accumulate a sum in a local variable
+- Moreover, the number of threads were specified to a certain number based off of 
+trial-and-error in a sense, and checking to see at what number, the program had the
+most significant speedup
+
+- It is of importance to note that as the Seasnet processor becomes more loaded with
+people trying to use it, that it begins to slow itself down, which lead to my program
+running much slower than it had earlier in the week
+- I feel that this may be a problem as it was stated that the average time of runs
+would be taken, however, there are significant fluctuations sometimes in the run time
+- Furthermore, it was stated that we would be graded using lnxsrv07, which yielded
+slower times for me than when running on lnxsrv09
+
+Step 4:
+
+make omp
+./omp
+
+- Now that certain changes were applied to func.c, I compiled it using the openMP
+version to make use of the parallelism:
+	FUNC TIME : 0.036095
+	TOTAL TIME : 1.930810
+- As shown above, the overall function time was reduced significantly from when it
+was run sequentially from 0.491183 to 0.036095, which yielded a function speedup of
+approximately 13.6 
+
+Step 5:
+
+make omp GPROF=1
+gprof omg | less
+
+- Now that the overall function time was significantly reduced, I ran the omp 
+executable version with the gprof profiler to see the results:
+
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 68.19      0.47     0.47                             filter
+ 11.61      0.55     0.08  4223368     0.00     0.00  rand2
+ 11.61      0.63     0.08    14196     0.01     0.01  findIndexBin
+  4.35      0.66     0.03        1    30.03   109.57  addSeed
+  2.90      0.68     0.02                             sequence
+  1.45      0.69     0.01        1    10.01    10.01  imdilateDisk
+  0.00      0.69     0.00    48420     0.00     0.00  round
+  0.00      0.69     0.00       16     0.00     0.00  dilateMatrix
+  0.00      0.69     0.00       15     0.00     0.00  func1
+  0.00      0.69     0.00       15     0.00     0.00  func2
+  0.00      0.69     0.00       15     0.00     0.00  func3
+  0.00      0.69     0.00       15     0.00     0.00  func4
+  0.00      0.69     0.00       15     0.00     0.00  func5
+  0.00      0.69     0.00       15     0.00     0.00  rand1
+  0.00      0.69     0.00        2     0.00     0.00  get_time
+  0.00      0.69     0.00        1     0.00     0.00  elapsed_time
+  0.00      0.69     0.00        1     0.00     0.00  fillMatrix
+  0.00      0.69     0.00        1     0.00     0.00  func0
+
+- As shown above, func1 (which had occupied about 57% of the overall run time of the
+program now only occupied 1.59% of the run time)
+- The func1 bottleneck had been significantly reduced, hence the faster run time
+
+Step 6:
+
+- The next step was to check with the memory leak issue, but a TA recently posted to
+not worry about memory leaks as their is a bug in some OpenMP code
+- I carried out the step below, and as shown there was a memory leak, but this was
+disregarded as told:
+
+make omp MTRACE=1
+./omp
+make checkmem
+
+Memory not freed:
+-----------------
+           Address     Size     Caller
+0x0000000002076060   0x1c08  at 0x7f0df1d9e869
+0x0000000002077c70     0xc0  at 0x7f0df1d9e869
+0x0000000002077d40     0xe0  at 0x7f0df1d9e8b9
+0x0000000002077e30    0x240  at 0x7f0df22cec25
+0x0000000002078080    0x240  at 0x7f0df22cec25
+0x00000000020782d0    0x240  at 0x7f0df22cec25
+0x0000000002078520    0x240  at 0x7f0df22cec25
+0x0000000002078770    0x240  at 0x7f0df22cec25
+0x00000000020789c0    0x240  at 0x7f0df22cec25
+0x0000000002078c10    0x240  at 0x7f0df22cec25
+0x0000000002078e60    0x240  at 0x7f0df22cec25
+0x00000000020790b0    0x240  at 0x7f0df22cec25
+0x0000000002079300    0x240  at 0x7f0df22cec25
+0x0000000002079550    0x240  at 0x7f0df22cec25
+0x00000000020797a0    0x240  at 0x7f0df22cec25
+0x00000000020799f0    0x240  at 0x7f0df22cec25
+0x0000000002079c40    0x240  at 0x7f0df22cec25
+0x0000000002079e90    0x240  at 0x7f0df22cec25
+0x000000000207a0e0    0x240  at 0x7f0df22cec25
+0x000000000207a330    0x240  at 0x7f0df22cec25
+0x000000000207a580    0x240  at 0x7f0df22cec25
+0x000000000207a7d0    0x240  at 0x7f0df22cec25
+0x000000000207aa20    0x240  at 0x7f0df22cec25
+0x000000000207ac70    0x240  at 0x7f0df22cec25
+0x000000000207aec0    0x240  at 0x7f0df22cec25
+0x000000000207b110    0x240  at 0x7f0df22cec25
+0x000000000207b360    0x240  at 0x7f0df22cec25
+0x000000000207b5b0    0x240  at 0x7f0df22cec25
+0x000000000207b800    0x240  at 0x7f0df22cec25
+
+Step 7: 
+
+make check
+
+- The last step was to make sure that my code produced the same output as the 
+original code
+- The following was output:
+
+cp omp filter
+./filter
+FUNC TIME : 0.036411
+TOTAL TIME : 1.998487
+diff --brief correct.txt output.txt
+
+- As shown in the last line my code produced the correct output as was required
+
+
+
+
+
+
+
